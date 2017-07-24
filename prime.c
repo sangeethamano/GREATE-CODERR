@@ -1,25 +1,31 @@
 #include <stdio.h>
 int main()
 {
-    int n, i, flag = 0;
+    int low, high, i, flag;
+    printf("Enter two numbers(intervals): ");
+    scanf("%d %d", &low, &high);
 
-    printf("Enter a positive integer: ");
-    scanf("%d",&n);
+    printf("Prime numbers between %d and %d are: ", low, high);
 
-    for(i=2; i<=n/2; ++i)
+    while (low < high)
     {
-        if(n%i==0)
+        flag = 0;
+
+        for(i = 2; i <= low/2; ++i)
         {
-            flag=1;
-            break;
+            if(low % i == 0)
+            {
+                flag = 1;
+                break;
+            }
         }
+
+        if (flag == 0)
+            printf("%d ", low);
+
+        ++low;
     }
 
-    if (flag==0)
-        printf("%d is a prime number.",n);
-    else
-        printf("%d is not a prime number.",n);
-    
     return 0;
 }
 
